@@ -314,6 +314,7 @@ h1, h2, h3, h4 {
   letter-spacing: 0.25em;
   color: var(--color-light);
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .logo-subtext {
@@ -322,6 +323,11 @@ h1, h2, h3, h4 {
   letter-spacing: 0.3em;
   color: var(--color-gold);
   margin-top: -2px;
+  white-space: nowrap;
+}
+
+.mobile-nav-cta {
+  display: none;
 }
 
 .nav-menu {
@@ -1383,7 +1389,30 @@ h1, h2, h3, h4 {
 
 @media (max-width: 768px) {
   :root {
-    --header-height: 70px;
+    --header-height: 65px;
+  }
+
+  .header-container {
+    width: 94%;
+  }
+
+  .logo-text {
+    font-size: 1.05rem;
+    letter-spacing: 0.16em;
+  }
+
+  .logo-subtext {
+    font-size: 0.52rem;
+    letter-spacing: 0.22em;
+  }
+
+  .header-actions .btn-sm {
+    display: none; /* Hide header action bar button on small mobile screens to keep header clean */
+  }
+
+  .mobile-nav-cta {
+    display: flex;
+    margin-top: 1rem;
   }
 
   .nav-menu {
@@ -1393,9 +1422,10 @@ h1, h2, h3, h4 {
     width: 100%;
     background: rgba(6, 24, 18, 0.98);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
-    padding: 2.5rem 1.5rem;
-    gap: 1.75rem;
+    padding: 2.5rem 1.75rem;
+    gap: 1.5rem;
     border-bottom: 1px solid var(--border-gold);
     clip-path: circle(0% at 100% 0);
     transition: clip-path 0.4s ease-in-out;
@@ -1407,18 +1437,19 @@ h1, h2, h3, h4 {
 
   .mobile-toggle {
     display: flex;
+    z-index: 1001;
   }
 
   .hero-title {
-    font-size: 2.85rem;
+    font-size: 2.5rem;
   }
 
   .section-title, .big-question-title, .final-cta-title {
-    font-size: 2.25rem;
+    font-size: 2.1rem;
   }
 
   .programme-title {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
 
   .programme-price-box {
@@ -1428,6 +1459,6 @@ h1, h2, h3, h4 {
   }
 
   .modal-card {
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.25rem;
   }
 }
