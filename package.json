@@ -1,0 +1,14 @@
+{
+  "name": "moksh-patterns-website",
+  "version": "1.0.0",
+  "description": "Moksh Patterns Editorial Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite --port 3000",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

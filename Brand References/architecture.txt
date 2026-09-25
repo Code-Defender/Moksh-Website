@@ -1,0 +1,613 @@
+Main navigation
+MOKSH PATTERNS
+
+The Work
+Who Taught You That?
+My Story
+Client Words
+
+                    [WORK WITH MOKSH]
+
+Keep the navigation minimal. Her brand is editorial, so don't make it look like a large corporate website.
+
+Page 1 — Home
+
+This is the most important page.
+
+Its job is:
+
+Instagram visitor → understands herself → understands Moksh → trusts her → explores the programme / work
+
+Sections
+
+1. Hero
+
+WHO TAUGHT YOU THAT?
+
+Then the central idea:
+
+You built the successful life.
+So why does part of it still feel like it belongs to everyone but you?
+
+CTA:
+
+EXPLORE THE WORK
+
+Secondary:
+
+MEET MOKSH
+
+2. Recognition
+
+Introduce the problem of learned patterns.
+
+Not invented "5 patterns" yet.
+
+Instead, use the themes we actually know:
+
+expectations
+self-doubt
+decision-making
+approval
+identity
+self-trust
+
+3. The core question
+
+Large editorial section:
+
+Who taught you that you had to be this way?
+
+Then explain the idea behind the brand.
+
+4. The approach
+
+Use her established language:
+
+RECOGNISE.
+QUESTION.
+RECLAIM.
+
+And/or:
+
+IDENTIFY.
+UNDERSTAND.
+BREAK.
+
+5. My Story
+
+Use the existing story:
+
+I knew how to be the woman I was taught to be.
+
+Then introduce Moksh.
+
+CTA:
+
+READ MY STORY
+
+6. Client Words
+
+Use the actual testimonial material you have.
+
+No invented statistics.
+
+7. Who Taught You That?
+
+Introduce the actual programme.
+
+We can mention the self-paced programme because that is supported by the reference material.
+
+Don't invent modules.
+
+CTA:
+
+EXPLORE THE PROGRAMME
+
+8. Final CTA
+
+Something emotionally aligned with the brand, such as:
+
+What would change if you trusted yourself?
+
+Then:
+
+EXPLORE THE WORK
+
+Page 2 — Who Taught You That?
+
+This is the programme page.
+
+Its job is different from the homepage.
+
+Homepage:
+
+"I understand what she's talking about."
+
+Programme page:
+
+"I understand what this programme is and whether I want it."
+
+Structure:
+
+Programme hero
+What "Who Taught You That?" means
+Who the programme is for
+The problems/themes it addresses
+What the programme involves — only information actually supported by her material
+Access/details
+Testimonials
+FAQ
+CTA to existing checkout
+
+The supplied checkout currently shows £1,999 and 12 months' access, but because you're making a demo, we should label these internally as reference details until she confirms they're current.
+
+Page 3 — My Story
+
+This should be highly visual.
+
+Start with:
+
+I knew how to be the woman I was taught to be.
+
+Then her story.
+
+Use her actual story from the supplied material rather than writing a completely fictional biography.
+
+Structure:
+
+Hero
+↓
+Her story
+↓
+The "good Asian daughter"
+↓
+Success vs inner experience
+↓
+What changed
+↓
+Why she does this work
+↓
+Her approach
+↓
+CTA
+Page 4 — The Work
+
+This explains how she works.
+
+Use the information we actually have:
+
+Deep self-reflection
+Practical tools
+Nervous system regulation
+Space
+Clarity
+Support
+Choosing differently
+
+And structure it visually around:
+
+RECOGNISE → QUESTION → RECLAIM
+
+This page should make her approach feel substantial and thoughtful.
+
+Page 5 — Client Words
+
+A dedicated testimonial page isn't absolutely necessary for the first demo, but I would include it because she already has testimonial content.
+
+Structure:
+
+CLIENT WORDS
+
+Large editorial testimonials.
+
+Then:
+
+client name
+role/title where supplied
+source such as LinkedIn recommendation where applicable
+
+Don't manufacture client results.
+
+Page 6 — Work With Moksh
+
+Because her Instagram has "Ways to Work Together", we should give this a dedicated destination.
+
+But here's the important part:
+
+Don't invent her coaching packages.
+
+Instead, make the page flexible:
+
+There are different ways to do this work.
+
+Then introduce the programme as the confirmed offer.
+
+For direct work, use something like:
+
+Interested in working together directly?
+
+[GET IN TOUCH]
+
+That lets the real Moksh later replace this with her actual application/booking process.
+
+So your site map becomes
+                    MOKSH PATTERNS
+                           │
+       ┌───────────────────┼───────────────────┐
+       │                   │                   │
+     THE WORK       WHO TAUGHT YOU THAT?    MY STORY
+       │                   │                   │
+       │                   │                   │
+       └──────────────┬────┴──────────────┬────┘
+                      │                   │
+                CLIENT WORDS       WORK WITH MOKSH
+
+And:
+
+HOME
+
+is the main entry point that connects everything.
+Homepage Blueprint
+1. Navigation
+
+Keep it minimal.
+
+Left:
+
+MOKSH PATTERNS
+
+Center/right:
+
+THE WORK
+WHO TAUGHT YOU THAT?
+MY STORY
+CLIENT WORDS
+
+Right CTA:
+
+WORK WITH MOKSH
+
+Use a dark forest-green header with subtle transparency.
+
+2. HERO — The first impression
+
+This is the most important section.
+
+Eyebrow
+
+RECOGNISE. QUESTION. RECLAIM.
+
+Main headline
+WHO TAUGHT YOU THAT?
+Supporting headline/copy
+
+Use the strongest verified concept from her material:
+
+You built the successful life.
+So why does part of it still feel like it belongs to everyone but you?
+
+CTA
+
+EXPLORE THE WORK
+
+Secondary:
+
+MY STORY
+
+Image
+
+Use her strongest professional portrait.
+
+Prefer:
+
+Moksh
+dark green environment
+warm lighting
+editorial composition
+thin gold frame
+Layout
+
+Don't center everything.
+
+Use:
+
+┌───────────────────────────────────────────┐
+│                                           │
+│  RECOGNISE. QUESTION. RECLAIM.            │
+│                                           │
+│  WHO                                      │
+│  TAUGHT                                   │
+│  YOU                                      │
+│  THAT?                    [MOKSH IMAGE]   │
+│                                           │
+│  You built the successful life...         │
+│                                           │
+│  [EXPLORE]    MY STORY                    │
+│                                           │
+└───────────────────────────────────────────┘
+
+Asymmetric editorial layout.
+
+3. RECOGNITION SECTION
+
+Now we make the visitor recognize herself.
+
+Small label
+
+THE PATTERNS
+
+Heading
+You learned how to succeed.
+
+Then explain the tension between external success and internal expectations.
+
+Use the themes we know from her content:
+
+You learned how to be responsible.
+You learned how to meet expectations.
+You learned to consider everyone else's opinion.
+You learned to question yourself.
+You learned to be the "good daughter."
+
+Don't turn these into unsupported claims about every client. Present them as reflective prompts.
+
+For example:
+
+Whose expectations are you carrying?
+
+Whose voice are you listening to?
+
+What have you learned to believe about yourself?
+
+This section should feel like an editorial magazine spread.
+
+4. THE BIG QUESTION
+
+This should be a visually dramatic section.
+
+Dark green background.
+
+Gold line.
+
+Huge serif:
+
+Who taught you that you had to be this way?
+
+Then a short paragraph explaining the philosophy.
+
+The visitor should pause here.
+
+This is where the brand differentiates itself.
+
+5. THE APPROACH
+Label
+
+THE WORK
+
+Heading
+Recognise. Question. Reclaim.
+
+Then three large editorial columns/sections:
+
+RECOGNISE
+
+Notice the patterns influencing your thoughts, decisions and behavior.
+
+QUESTION
+
+Explore where those beliefs, expectations and rules came from.
+
+RECLAIM
+
+Create space for your own voice, choices and direction.
+
+Then a second smaller statement:
+
+WE IDENTIFY. WE UNDERSTAND. WE BREAK.
+
+This uses the established brand language.
+
+6. MOKSH'S STORY
+
+Switch to warm cream.
+
+Label
+
+MY STORY
+
+Main headline
+I knew how to be the woman I was taught to be.
+
+Use her actual story from the supplied material.
+
+Large portrait on one side.
+
+Text on the other.
+
+Include the "good Asian daughter" narrative because it is an important part of the supplied brand story.
+
+CTA:
+
+READ MY STORY →
+
+7. WHAT THE WORK INVOLVES
+
+Don't invent a curriculum.
+
+Instead, use the elements we actually have from her material:
+
+DEEP SELF-REFLECTION
+PRACTICAL TOOLS
+NERVOUS SYSTEM REGULATION
+SPACE
+CLARITY
+SUPPORT
+CHOOSING DIFFERENTLY
+
+These can be arranged as an editorial vertical list rather than six cards.
+
+For example:
+
+DEEP SELF-REFLECTION        ─────────
+
+PRACTICAL TOOLS             ─────────
+
+NERVOUS SYSTEM REGULATION   ─────────
+
+SPACE                        ─────────
+
+CLARITY                      ─────────
+
+SUPPORT                      ─────────
+
+Very simple.
+
+8. WHO TAUGHT YOU THAT? PROGRAMME
+
+Now we introduce the commercial offer.
+
+Label
+
+THE PROGRAMME
+
+Heading
+WHO TAUGHT YOU THAT?
+Description
+
+A self-paced programme for Asian women.
+
+Then explain the programme using only information supported by the supplied references.
+
+The current reference material shows:
+
+12 months' access
+
+and:
+
+£1,999
+
+We can display those in the demo, but I would add a tiny internal note in our development documentation:
+
+"Reference price/access — confirm before launch."
+
+CTA
+EXPLORE THE PROGRAMME
+
+This button can eventually point to her existing checkout.
+
+9. CLIENT WORDS
+
+Don't use a grid of 12 tiny testimonials.
+
+Use large editorial quotes.
+
+Example structure:
+
+"Working with Tripti has been nothing short of transformational."
+
+Then:
+
+Client Name
+
+Role
+
+From a LinkedIn recommendation
+
+Use the actual testimonial screenshots/text you've supplied.
+
+10. WORK WITH MOKSH
+
+This should be relatively simple because we don't have enough verified information about her private coaching offers.
+
+Heading
+There are different ways to do this work.
+
+Then:
+
+Explore the programme or get in touch to discuss working together directly.
+
+Two options:
+
+WHO TAUGHT YOU THAT?
+
+Explore the programme →
+
+WORK WITH MOKSH
+
+Get in touch →
+
+Don't invent a "Private Leadership Coaching" package yet.
+
+11. FINAL CTA
+
+This should be one of the strongest visual moments.
+
+Dark green.
+
+Large typography.
+
+Small gold label
+
+A DIFFERENT CHOICE BEGINS WITH A QUESTION.
+
+Main headline
+What would change if you trusted yourself?
+
+CTA:
+
+EXPLORE THE WORK
+
+This ends the website emotionally rather than with a generic:
+
+"Ready to transform your life?"
+
+12. Footer
+
+Minimal.
+
+MOKSH PATTERNS
+
+The Work
+Who Taught You That?
+My Story
+Client Words
+Work With Moksh
+
+Instagram
+
+© Moksh Patterns
+Privacy
+Terms
+
+Gold signature/detail.
+
+No giant footer.
+
+The complete homepage
+
+So now our homepage is:
+
+01  NAVIGATION
+        ↓
+02  HERO
+        ↓
+03  THE PATTERNS / RECOGNITION
+        ↓
+04  WHO TAUGHT YOU THAT?
+        ↓
+05  RECOGNISE • QUESTION • RECLAIM
+        ↓
+06  MY STORY
+        ↓
+07  THE WORK / APPROACH
+        ↓
+08  WHO TAUGHT YOU THAT? PROGRAMME
+        ↓
+09  CLIENT WORDS
+        ↓
+10  WORK WITH MOKSH
+        ↓
+11  FINAL CTA
+        ↓
+12  FOOTER
