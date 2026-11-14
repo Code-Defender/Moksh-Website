@@ -20,13 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (mobileToggle && navMenu) {
     mobileToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
+      const isOpen = navMenu.classList.toggle('active');
+      mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
-    // Close menu when clicking a link
-    document.querySelectorAll('.nav-link').forEach(link => {
+    // Close menu when clicking any nav link or CTA inside mobile drawer
+    document.querySelectorAll('.nav-link, .mobile-nav-cta').forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
       });
     });
   }
@@ -91,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, observerOptions);
 
-  document.querySelectorAll('.question-card, .pillar-card, .testimonial-card, .editorial-item, .pathway-card').forEach(el => {
+  document.querySelectorAll('.stage-card, .testimonial-card, .offer-card').forEach(el => {
     observer.observe(el);
   });
 
