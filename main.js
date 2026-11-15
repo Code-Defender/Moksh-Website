@@ -97,5 +97,48 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(el);
   });
 
+  // 5. CENTRALIZED WEBINAR REGISTRATION CONFIGURATION
+  // Single source of truth for the client's webinar registration destination.
+  const WEBINAR_REGISTRATION_URL = 'https://placeholder-systeme-io-webinar-registration.com';
+
+  document.querySelectorAll('a[data-webinar-url], .btn-webinar-cta').forEach(link => {
+    link.href = WEBINAR_REGISTRATION_URL;
+  });
+
+  // 6. VIDEO TESTIMONIAL PLAY/PAUSE CONTROLLER
+  const video = document.getElementById('testimonial-video');
+  const playBtn = document.getElementById('video-play-btn');
+  const videoContainer = document.getElementById('video-container');
+
+  if (video && playBtn && videoContainer) {
+    const togglePlay = () => {
+      if (video.paused || video.ended) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    };
+
+    playBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      togglePlay();
+    });
+
+    video.addEventListener('play', () => {
+      videoContainer.classList.add('is-playing');
+      playBtn.setAttribute('aria-label', 'Pause Video');
+    });
+
+    video.addEventListener('pause', () => {
+      videoContainer.classList.remove('is-playing');
+      playBtn.setAttribute('aria-label', 'Play Video');
+    });
+
+    video.addEventListener('ended', () => {
+      videoContainer.classList.remove('is-playing');
+      playBtn.setAttribute('aria-label', 'Replay Video');
+    });
+  }
+
   console.log('Moksh Patterns Editorial Web App Initialized');
 });
