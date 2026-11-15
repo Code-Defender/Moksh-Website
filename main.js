@@ -20,13 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (mobileToggle && navMenu) {
     mobileToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
+      const isOpen = navMenu.classList.toggle('active');
+      mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
-    // Close menu when clicking a link
-    document.querySelectorAll('.nav-link').forEach(link => {
+    // Close menu when clicking any nav link or CTA inside mobile drawer
+    document.querySelectorAll('.nav-link, .mobile-nav-cta').forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
       });
     });
   }
@@ -91,9 +93,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, observerOptions);
 
-  document.querySelectorAll('.question-card, .pillar-card, .testimonial-card, .editorial-item, .pathway-card').forEach(el => {
+  document.querySelectorAll('.stage-card, .testimonial-card, .offer-card').forEach(el => {
     observer.observe(el);
   });
+
+  // 5. CENTRALIZED WEBINAR REGISTRATION CONFIGURATION
+  // Single source of truth for the client's webinar registration destination.
+  const WEBINAR_REGISTRATION_URL = 'https://placeholder-systeme-io-webinar-registration.com';
+
+  document.querySelectorAll('a[data-webinar-url], .btn-webinar-cta').forEach(link => {
+    link.href = WEBINAR_REGISTRATION_URL;
+  });
+
+  // 6. VIDEO TESTIMONIAL PLAY/PAUSE CONTROLLER
+  const video = document.getElementById('testimonial-video');
+  const playBtn = document.getElementById('video-play-btn');
+  const videoContainer = document.getElementById('video-container');
+
+  if (video && playBtn && videoContainer) {
+    const togglePlay = () => {
+      if (video.paused || video.ended) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    };
+
+    playBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      togglePlay();
+    });
+
+    video.addEventListener('play', () => {
+      videoContainer.classList.add('is-playing');
+      playBtn.setAttribute('aria-label', 'Pause Video');
+    });
+
+    video.addEventListener('pause', () => {
+      videoContainer.classList.remove('is-playing');
+      playBtn.setAttribute('aria-label', 'Play Video');
+    });
+
+    video.addEventListener('ended', () => {
+      videoContainer.classList.remove('is-playing');
+      playBtn.setAttribute('aria-label', 'Replay Video');
+    });
+  }
 
   console.log('Moksh Patterns Editorial Web App Initialized');
 });
