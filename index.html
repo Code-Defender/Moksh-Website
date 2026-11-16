@@ -346,8 +346,7 @@
               </div>
 
               <div class="offer-cta-wrap">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScofcQ8EoniqvvyaMAAEbhH9JBiQ_eVmo3XuvTOQkIErTGcHQ/viewform?usp=sharing&ouid=115774478823838479284"
-                  target="_blank" rel="noopener noreferrer" class="btn btn-emerald btn-block">Get in Touch</a>
+                <button type="button" class="btn btn-emerald btn-block" id="btn-open-contact-modal">Get in Touch</button>
               </div>
             </div>
           </div>
@@ -369,16 +368,17 @@
         <!-- Featured Video Testimonial (Option 2) -->
         <div class="video-testimonial-spotlight">
           <div class="video-player-container" id="video-container">
-            <video class="testimonial-video" id="testimonial-video" controls preload="metadata" poster="/images/sophie-poster.jpg" playsinline>
+            <video class="testimonial-video" id="testimonial-video" controls preload="metadata"
+              poster="/images/sophie-poster.jpg" playsinline>
               <source src="/assets/sophie-testimonial.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
             <button class="video-play-btn" id="video-play-btn" aria-label="Play Video" type="button">
               <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M8 5v14l11-7z"/>
+                <path d="M8 5v14l11-7z" />
               </svg>
               <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
               </svg>
             </button>
           </div>
@@ -394,7 +394,7 @@
               boundaries in my life.
             </p>
             <div class="video-author">
-              <h4 class="author-name font-serif">Sophie</h4>
+              <h4 class="author-name font-serif">Sofi Khan</h4>
               <p class="author-title">Lawyer</p>
             </div>
           </div>
@@ -639,32 +639,204 @@
   </div>
 
 
-  <!-- MODAL 3: DIRECT CONTACT MODAL -->
+  <!-- MODAL 3: COACHING QUALIFICATION APPLICATION MODAL -->
   <div class="modal-overlay" id="modal-contact" aria-hidden="true">
-    <div class="modal-card bg-dark-shadow text-light">
-      <button class="modal-close" id="modal-contact-close">&times;</button>
+    <div class="modal-card application-modal">
+      <button class="modal-close" id="modal-contact-close" aria-label="Close Application">&times;</button>
 
-      <span class="eyebrow-label text-gold">DIRECT WORK</span>
-      <h3 class="modal-title font-serif">Work With Moksh Directly</h3>
-      <p class="modal-subtitle">Interested in personalized 1:1 coaching or private inquiry?</p>
+      <div class="modal-header">
+        <span class="eyebrow-label text-gold">PRIVATE 1:1 COACHING</span>
+        <h3 class="modal-title font-serif">Coaching Application</h3>
+        <p class="modal-subtitle">Please complete this application so I can understand where you are and whether we're a good fit to work together.</p>
+      </div>
 
-      <form class="contact-form" id="contact-form"
-        onsubmit="event.preventDefault(); alert('Thank you. Your message has been received.'); document.getElementById('modal-contact').classList.remove('active');">
-        <div class="form-group">
-          <label>YOUR NAME</label>
-          <input type="text" required placeholder="First and last name">
-        </div>
-        <div class="form-group">
-          <label>EMAIL ADDRESS</label>
-          <input type="email" required placeholder="your.email@domain.com">
-        </div>
-        <div class="form-group">
-          <label>WHAT PATTERNS ARE YOU READY TO BREAK?</label>
-          <textarea rows="4" required
-            placeholder="Tell me a little about your situation or what you hope to explore..."></textarea>
-        </div>
-        <button type="submit" class="btn btn-gold btn-block">SEND INQUIRY &rarr;</button>
-      </form>
+      <div class="modal-body-scroll">
+        <form class="qualification-form" id="coaching-application-form" novalidate>
+          <!-- Web3Forms Configuration -->
+          <input type="hidden" name="access_key" id="web3forms-access-key" value="">
+          <input type="hidden" name="subject" value="New Coaching Application – Moksh Patterns">
+          <input type="hidden" name="from_name" value="Moksh Patterns Application System">
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="Submission Date" id="app-submission-date" value="">
+
+          <!-- Q1: Email Address -->
+          <div class="form-group">
+            <label for="app-email">EMAIL ADDRESS <span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="email" id="app-email" name="Email Address" required placeholder="your.email@domain.com">
+          </div>
+
+          <!-- Q2: Full Name -->
+          <div class="form-group">
+            <label for="app-name">FULL NAME <span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="text" id="app-name" name="Full Name" required placeholder="First and last name">
+          </div>
+
+          <!-- Q3: Instagram Handle -->
+          <div class="form-group">
+            <label for="app-instagram">WHAT'S YOUR INSTAGRAM HANDLE? <span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="text" id="app-instagram" name="Instagram Handle" required placeholder="@yourhandle">
+          </div>
+
+          <!-- Q4: Current Work -->
+          <div class="form-group">
+            <label for="app-work">WHAT DO YOU CURRENTLY DO FOR WORK? <span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="text" id="app-work" name="Current Work" required placeholder="Your role, business, or profession">
+          </div>
+
+          <!-- Q5: Current Situation -->
+          <div class="form-group">
+            <label for="app-situation">WHAT'S HAPPENING IN YOUR LIFE RIGHT NOW THAT YOU'D LIKE SUPPORT WITH? <span class="required-mark" aria-hidden="true">*</span></label>
+            <textarea id="app-situation" name="Current Situation" rows="4" required placeholder="Describe what you are currently navigating..."></textarea>
+          </div>
+
+          <!-- Q6: Desired Outcome -->
+          <div class="form-group">
+            <label for="app-outcome">IF WE WORKED TOGETHER SUCCESSFULLY, WHAT WOULD YOU MOST WANT TO BE DIFFERENT IN YOUR LIFE? <span class="required-mark" aria-hidden="true">*</span></label>
+            <textarea id="app-outcome" name="Desired Outcome" rows="4" required placeholder="Describe what meaningful change looks like for you..."></textarea>
+          </div>
+
+          <!-- Q7: Why Now -->
+          <div class="form-group">
+            <label for="app-why">WHY DOES CHANGING THIS MATTER TO YOU NOW? <span class="required-mark" aria-hidden="true">*</span></label>
+            <textarea id="app-why" name="Why Now" rows="3" required placeholder="What makes this the right time to address this?"></textarea>
+          </div>
+
+          <!-- Q8: Have you tried to work through this before? -->
+          <div class="form-group form-group--fieldset">
+            <fieldset>
+              <legend class="form-legend">HAVE YOU TRIED TO WORK THROUGH THIS BEFORE? <span class="required-mark" aria-hidden="true">*</span></legend>
+              <div class="radio-options-list">
+                <label class="form-radio-label">
+                  <input type="radio" name="Previous Attempts" value="Yes, with professional support or coaching" required>
+                  <span class="radio-custom"></span>
+                  <span class="radio-text">Yes, with professional support or coaching</span>
+                </label>
+                <label class="form-radio-label">
+                  <input type="radio" name="Previous Attempts" value="Yes, by myself">
+                  <span class="radio-custom"></span>
+                  <span class="radio-text">Yes, by myself</span>
+                </label>
+                <label class="form-radio-label">
+                  <input type="radio" name="Previous Attempts" value="I've tried a few things, but nothing has created lasting change">
+                  <span class="radio-custom"></span>
+                  <span class="radio-text">I've tried a few things, but nothing has created lasting change</span>
+                </label>
+                <label class="form-radio-label">
+                  <input type="radio" name="Previous Attempts" value="No, this is the first time I'm actively addressing it">
+                  <span class="radio-custom"></span>
+                  <span class="radio-text">No, this is the first time I'm actively addressing it</span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- Q9: How serious are you about making this change now? -->
+          <div class="form-group form-group--fieldset">
+            <fieldset>
+              <legend class="form-legend">HOW SERIOUS ARE YOU ABOUT MAKING THIS CHANGE NOW? <span class="required-mark" aria-hidden="true">*</span></legend>
+              <div class="radio-options-list">
+                <label class="form-radio-label">
+                  <input type="radio" name="Commitment Level" value="I'm fully committed and ready to take action now" required>
+                  <span class="radio-custom"></span>
+                  <span class="radio-text">I'm fully committed and ready to take action now</span>
+                </label>
+                <label class="form-radio-label">
+                  <input type="radio" name="Commitment Level" value="I'm serious about changing this and looking for the right support">
+                  <span class="radio-custom"></span>
+                  <span class="radio-text">I'm serious about changing this and looking for the right support</span>
+                </label>
+                <label class="form-radio-label">
+                  <input type="radio" name="Commitment Level" value="I know I need to change, but I'm still deciding whether I'm ready">
+                  <span class="radio-custom"></span>
+                  <span class="radio-text">I know I need to change, but I'm still deciding whether I'm ready</span>
+                </label>
+                <label class="form-radio-label">
+                  <input type="radio" name="Commitment Level" value="I'm mainly exploring at the moment">
+                  <span class="radio-custom"></span>
+                  <span class="radio-text">I'm mainly exploring at the moment</span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- Q10: Investment level -->
+          <div class="form-group form-group--fieldset">
+            <fieldset>
+              <legend class="form-legend">IF YOU FOUND THE RIGHT SUPPORT TO HELP YOU CREATE THE CHANGE YOU'VE DESCRIBED, WHAT LEVEL OF INVESTMENT ARE YOU CURRENTLY IN A POSITION TO MAKE? <span class="required-mark" aria-hidden="true">*</span></legend>
+              <div class="radio-options-list">
+                <label class="form-radio-label">
+                  <input type="radio" name="Investment Level" value="£2,000–£3,000" required>
+                  <span class="radio-custom"></span>
+                  <span class="radio-text">£2,000–£3,000</span>
+                </label>
+                <label class="form-radio-label">
+                  <input type="radio" name="Investment Level" value="£3,000–£5,000">
+                  <span class="radio-custom"></span>
+                  <span class="radio-text">£3,000–£5,000</span>
+                </label>
+                <label class="form-radio-label">
+                  <input type="radio" name="Investment Level" value="I'm not currently in a position to invest">
+                  <span class="radio-custom"></span>
+                  <span class="radio-text">I'm not currently in a position to invest</span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- Q11: Payment option -->
+          <div class="form-group form-group--fieldset">
+            <fieldset>
+              <legend class="form-legend">IF WE BOTH FEEL WORKING TOGETHER IS THE RIGHT FIT, WHICH PAYMENT OPTION WOULD SUIT YOU BEST? <span class="required-mark" aria-hidden="true">*</span></legend>
+              <div class="radio-options-list">
+                <label class="form-radio-label">
+                  <input type="radio" name="Payment Preference" value="Payment in full" required>
+                  <span class="radio-custom"></span>
+                  <span class="radio-text">Payment in full</span>
+                </label>
+                <label class="form-radio-label">
+                  <input type="radio" name="Payment Preference" value="A payment plan">
+                  <span class="radio-custom"></span>
+                  <span class="radio-text">A payment plan</span>
+                </label>
+                <label class="form-radio-label">
+                  <input type="radio" name="Payment Preference" value="I'm open to discussing both">
+                  <span class="radio-custom"></span>
+                  <span class="radio-text">I'm open to discussing both</span>
+                </label>
+                <label class="form-radio-label">
+                  <input type="radio" name="Payment Preference" value="I'm not ready to make a financial commitment">
+                  <span class="radio-custom"></span>
+                  <span class="radio-text">I'm not ready to make a financial commitment</span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- Privacy Notice -->
+          <div class="form-privacy-note">
+            <p>Your application information will be collected to review your application and contact you about coaching with Moksh Patterns. By submitting this form, you agree to this. <a href="#" class="privacy-link" onclick="event.preventDefault();">Privacy Policy</a>.</p>
+          </div>
+
+          <!-- Marketing Consent Checkbox (Optional, Unchecked) -->
+          <div class="form-group form-group--checkbox">
+            <label class="form-checkbox-label">
+              <input type="checkbox" name="Marketing Consent" value="Yes, opted in to email updates" id="app-marketing">
+              <span class="checkbox-custom"></span>
+              <span class="checkbox-text">I'd also like to receive occasional emails with insights, updates and resources from Moksh Patterns. I understand I can unsubscribe at any time.</span>
+            </label>
+          </div>
+
+          <!-- Status / Error / Success Messages -->
+          <div id="app-form-error" class="form-message form-message--error" role="alert" aria-live="polite" hidden></div>
+          <div id="app-form-success" class="form-message form-message--success" role="status" aria-live="polite" hidden></div>
+
+          <div class="form-submit-wrap">
+            <button type="submit" class="btn btn-emerald btn-block" id="app-submit-btn">
+              <span class="btn-text">Submit Application</span>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 

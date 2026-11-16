@@ -140,5 +140,199 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 7. COACHING QUALIFICATION APPLICATION FORM SUBMISSION (WEB3FORMS)
+  const appForm = document.getElementById('coaching-application-form');
+  const appSubmitBtn = document.getElementById('app-submit-btn');
+  const appErrorMsg = document.getElementById('app-form-error');
+  const appSuccessMsg = document.getElementById('app-form-success');
+  const dateInput = document.getElementById('app-submission-date');
+  const accessKeyInput = document.getElementById('web3forms-access-key');
+
+  if (appForm) {
+    let isSubmitting = false;
+
+    // Load Web3Forms Access Key from Vite environment variables
+    const getAccessKey = () => {
+      return (import.meta.env && import.meta.env.VITE_WEB3FORMS_ACCESS_KEY) || (accessKeyInput ? accessKeyInput.value : '');
+    };
+
+    // Set submission date when opening modal or on page load
+    const updateSubmissionDate = () => {
+      if (dateInput) {
+        dateInput.value = new Date().toLocaleString('en-GB', {
+          dateStyle: 'full',
+          timeStyle: 'long',
+          timeZone: 'Europe/London'
+        });
+      }
+    };
+    updateSubmissionDate();
+
+    // Reset messages when modal triggers are clicked
+    const contactTrigger = document.getElementById('btn-open-contact-modal');
+    if (contactTrigger) {
+      contactTrigger.addEventListener('click', () => {
+        updateSubmissionDate();
+        if (appErrorMsg) appErrorMsg.hidden = true;
+      });
+    }
+
+    appForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (isSubmitting) return;
+
+      // Clear previous notices
+      if (appErrorMsg) {
+        appErrorMsg.hidden = true;
+        appErrorMsg.textContent = '';
+      }
+      if (appSuccessMsg) {
+        appSuccessMsg.hidden = true;
+        appSuccessMsg.textContent = '';
+      }
+
+      // Honeypot check (Web3Forms spam protection)
+      const botcheck = appForm.querySelector('input[name="botcheck"]');
+      if (botcheck && botcheck.checked) {
+        console.warn('Spam submission detected by honeypot.');
+        return;
+      }
+
+      // Validate required text / textarea fields
+      const requiredInputs = [
+        { el: document.getElementById('app-email'), name: 'Email Address' },
+        { el: document.getElementById('app-name'), name: 'Full Name' },
+        { el: document.getElementById('app-instagram'), name: 'Instagram Handle' },
+        { el: document.getElementById('app-work'), name: 'Current Work' },
+        { el: document.getElementById('app-situation'), name: 'Current Situation' },
+        { el: document.getElementById('app-outcome'), name: 'Desired Outcome' },
+        { el: document.getElementById('app-why'), name: 'Why Now' }
+      ];
+
+      for (const item of requiredInputs) {
+        if (!item.el || !item.el.value.trim()) {
+          showError(`Please fill in your ${item.name}.`);
+          if (item.el) item.el.focus();
+          return;
+        }
+      }
+
+      // Basic email pattern check
+      const emailVal = document.getElementById('app-email').value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailVal)) {
+        showError('Please enter a valid email address.');
+        document.getElementById('app-email').focus();
+        return;
+      }
+
+      // Validate required radio groups
+      const requiredRadioGroups = [
+        { name: 'Previous Attempts', label: 'Have you tried to work through this before?' },
+        { name: 'Commitment Level', label: 'How serious are you about making this change now?' },
+        { name: 'Investment Level', label: 'Level of investment' },
+        { name: 'Payment Preference', label: 'Payment option preference' }
+      ];
+
+      for (const group of requiredRadioGroups) {
+        const checked = appForm.querySelector(`input[name="${group.name}"]:checked`);
+        if (!checked) {
+          showError(`Please select an option for: "${group.label}".`);
+          const firstRadio = appForm.querySelector(`input[name="${group.name}"]`);
+          if (firstRadio) firstRadio.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+      }
+
+      // Update date right before sending
+      updateSubmissionDate();
+
+      // Lock UI
+      isSubmitting = true;
+      if (appSubmitBtn) {
+        appSubmitBtn.disabled = true;
+        const btnText = appSubmitBtn.querySelector('.btn-text');
+        if (btnText) {
+          btnText.textContent = 'Submitting Application...';
+        } else {
+          appSubmitBtn.textContent = 'Submitting Application...';
+        }
+      }
+
+      const currentKey = getAccessKey();
+      const formData = new FormData(appForm);
+
+      // Set Web3Forms configuration fields
+      formData.set('access_key', currentKey);
+      formData.set('replyto', emailVal);
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formData
+        });
+
+        const data = await response.json().catch(() => ({}));
+
+        if (response.ok && (data.success === true || data.success === 'true')) {
+          // Success
+          if (appSuccessMsg) {
+            appSuccessMsg.innerHTML = `
+              <strong>Application Received</strong>
+              <p>Thank you for taking the time to share your situation. Moksh will review your application carefully and reach out to you shortly.</p>
+            `;
+            appSuccessMsg.hidden = false;
+            appSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+
+          appForm.reset();
+
+          if (appSubmitBtn) {
+            appSubmitBtn.disabled = true;
+            const btnText = appSubmitBtn.querySelector('.btn-text');
+            if (btnText) {
+              btnText.textContent = 'Application Submitted ✓';
+            } else {
+              appSubmitBtn.textContent = 'Application Submitted ✓';
+            }
+          }
+        } else {
+          const errMsg = data.message || 'Unable to submit your application at this time. Please try again.';
+          throw new Error(errMsg);
+        }
+      } catch (err) {
+        console.error('Submission error:', err);
+        const userFacingErr = (err.message && err.message.toLowerCase().includes('access key'))
+          ? 'Form submission is currently being configured with the access key. Please email hello@mokshpatterns.com directly.'
+          : 'There was an issue submitting your application. Please check your connection and try again, or email hello@mokshpatterns.com directly.';
+
+        showError(userFacingErr);
+
+        if (appSubmitBtn) {
+          appSubmitBtn.disabled = false;
+          const btnText = appSubmitBtn.querySelector('.btn-text');
+          if (btnText) {
+            btnText.textContent = 'Submit Application';
+          } else {
+            appSubmitBtn.textContent = 'Submit Application';
+          }
+        }
+      } finally {
+        isSubmitting = false;
+      }
+    });
+
+    function showError(msg) {
+      if (appErrorMsg) {
+        appErrorMsg.textContent = msg;
+        appErrorMsg.hidden = false;
+        appErrorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  }
+
   console.log('Moksh Patterns Editorial Web App Initialized');
 });

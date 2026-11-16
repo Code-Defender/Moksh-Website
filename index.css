@@ -1565,6 +1565,221 @@ h1, h2, h3, h4 {
   box-shadow: 0 0 0 3px rgba(18, 60, 50, 0.12);
 }
 
+/* Application Modal & Coaching Qualification Form Styles */
+.modal-card.application-modal {
+  max-width: 680px;
+  width: 94%;
+  max-height: 90vh;
+  padding: 2.75rem 2.5rem;
+}
+
+.modal-header {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.qualification-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 0.5rem;
+}
+
+.required-mark {
+  color: #B9382E;
+  font-weight: 700;
+  margin-left: 0.15rem;
+}
+
+.form-group--fieldset fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.form-legend {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--color-antique-gold);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  display: block;
+  line-height: 1.45;
+}
+
+.radio-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.form-radio-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  background: #FFFFFF;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+  font-size: 0.92rem;
+  color: var(--color-charcoal-ink);
+  line-height: 1.4;
+  position: relative;
+}
+
+.form-radio-label:hover {
+  border-color: var(--color-antique-gold);
+  background: #FCFBF9;
+}
+
+.form-radio-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.radio-custom {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(120, 87, 31, 0.45);
+  margin-top: 2px;
+  flex-shrink: 0;
+  position: relative;
+  transition: all var(--transition-fast);
+  background: #FFFFFF;
+}
+
+.form-radio-label input[type="radio"]:checked ~ .radio-custom {
+  border-color: var(--color-deep-emerald);
+  background: var(--color-deep-emerald);
+}
+
+.form-radio-label input[type="radio"]:checked ~ .radio-custom::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #FFFFFF;
+}
+
+.form-radio-label input[type="radio"]:focus-visible ~ .radio-custom {
+  box-shadow: 0 0 0 3px rgba(18, 60, 50, 0.2);
+}
+
+.form-radio-label input[type="radio"]:checked ~ .radio-text {
+  color: var(--color-deep-emerald);
+  font-weight: 500;
+}
+
+.form-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  position: relative;
+}
+
+.form-checkbox-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.checkbox-custom {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  border: 1.5px solid rgba(120, 87, 31, 0.45);
+  margin-top: 1px;
+  flex-shrink: 0;
+  position: relative;
+  transition: all var(--transition-fast);
+  background: #FFFFFF;
+}
+
+.form-checkbox-label input[type="checkbox"]:checked ~ .checkbox-custom {
+  background: var(--color-deep-emerald);
+  border-color: var(--color-deep-emerald);
+}
+
+.form-checkbox-label input[type="checkbox"]:checked ~ .checkbox-custom::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 5px;
+  height: 9px;
+  border: solid #FFFFFF;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.form-privacy-note {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-top: 0.25rem;
+}
+
+.form-privacy-note .privacy-link {
+  color: var(--color-antique-gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.form-privacy-note .privacy-link:hover {
+  color: var(--color-deep-emerald);
+}
+
+.form-message {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.form-message--error {
+  background-color: #FDEDED;
+  border: 1px solid #F5C6CB;
+  color: #721C24;
+}
+
+.form-message--success {
+  background-color: #EBF4F1;
+  border: 1px solid #B7D9CE;
+  color: var(--color-deep-emerald);
+}
+
+.form-message--success strong {
+  display: block;
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+  color: var(--color-deep-emerald);
+}
+
+.form-message--success p {
+  margin: 0;
+  color: var(--color-charcoal-ink);
+}
+
+.form-submit-wrap {
+  margin-top: 0.5rem;
+}
+
 /* --------------------------------------------------------------------------
    19. RESPONSIVE BREAKPOINTS (MOBILE & TABLET)
    -------------------------------------------------------------------------- */
@@ -1898,6 +2113,16 @@ h1, h2, h3, h4 {
 
   .modal-card {
     padding: 2rem 1.25rem;
+  }
+
+  .modal-card.application-modal {
+    padding: 2rem 1.2rem;
+    max-height: 94vh;
+  }
+
+  .form-radio-label {
+    padding: 0.75rem 0.85rem;
+    font-size: 0.88rem;
   }
 }
 
