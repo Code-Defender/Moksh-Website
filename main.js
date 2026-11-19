@@ -2,8 +2,10 @@
    MOKSH PATTERNS — INTERACTIVE APPLICATION SCRIPT
    ========================================================================== */
 
+import { CONFIG } from './config.js';
+
 document.addEventListener('DOMContentLoaded', () => {
-  
+
   // 1. STICKY HEADER ON SCROLL
   const header = document.getElementById('site-header');
   window.addEventListener('scroll', () => {
@@ -17,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. MOBILE MENU TOGGLE
   const mobileToggle = document.getElementById('mobile-toggle');
   const navMenu = document.getElementById('nav-menu');
-  
+
   if (mobileToggle && navMenu) {
     mobileToggle.addEventListener('click', () => {
       const isOpen = navMenu.classList.toggle('active');
@@ -97,12 +99,16 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(el);
   });
 
-  // 5. CENTRALIZED WEBINAR REGISTRATION CONFIGURATION
-  // Single source of truth for the client's webinar registration destination.
-  const WEBINAR_REGISTRATION_URL = 'https://placeholder-systeme-io-webinar-registration.com';
-
+  // 5. CENTRALIZED EXTERNAL DESTINATIONS CONFIGURATION
+  // Automatically sets destination URLs for all buttons & links across the page
+  // 1. Free Webinar Registration
   document.querySelectorAll('a[data-webinar-url], .btn-webinar-cta').forEach(link => {
-    link.href = WEBINAR_REGISTRATION_URL;
+    link.href = CONFIG.WEBINAR_REGISTRATION_URL;
+  });
+
+  // 2. Explore the Programme
+  document.querySelectorAll('a[data-explore-programme], #btn-explore-programme-link').forEach(link => {
+    link.href = CONFIG.EXPLORE_PROGRAMME_URL;
   });
 
   // 6. VIDEO TESTIMONIAL PLAY/PAUSE CONTROLLER
@@ -140,7 +146,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 7. COACHING QUALIFICATION APPLICATION FORM SUBMISSION (WEB3FORMS)
+  // ==========================================================================
+  // 7. COACHING APPLICATION FORM SUBMISSION & CONDITIONAL REDIRECTS (WEB3FORMS)
+  // ==========================================================================
+
+  // Destination URLs are loaded from centralized CONFIG
+  // 3. £27 Paid Programme / Guide URL
+  const PAID_GUIDE_URL = CONFIG.PAID_GUIDE_URL;
+
+  // 4. Calendly Booking URL
+  const CALENDLY_URL = CONFIG.CALENDLY_URL;
+
   const appForm = document.getElementById('coaching-application-form');
   const appSubmitBtn = document.getElementById('app-submit-btn');
   const appErrorMsg = document.getElementById('app-form-error');
@@ -151,9 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (appForm) {
     let isSubmitting = false;
 
-    // Load Web3Forms Access Key from Vite environment variables
+    // Load Web3Forms Access Key from centralized CONFIG or fallback
     const getAccessKey = () => {
-      return (import.meta.env && import.meta.env.VITE_WEB3FORMS_ACCESS_KEY) || (accessKeyInput ? accessKeyInput.value : '');
+      return CONFIG.WEB3FORMS_ACCESS_KEY || (accessKeyInput ? accessKeyInput.value : '');
     };
 
     // Set submission date when opening modal or on page load
@@ -244,6 +260,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
+      // Extract answers to Q9 (Investment Level) and Q10 (Payment Preference)
+      const q9Selected = appForm.querySelector('input[name="Investment Level"]:checked');
+      const q10Selected = appForm.querySelector('input[name="Payment Preference"]:checked');
+      const q9Value = q9Selected ? q9Selected.value.trim() : '';
+      const q10Value = q10Selected ? q10Selected.value.trim() : '';
+
       // Update date right before sending
       updateSubmissionDate();
 
@@ -262,54 +284,152 @@ document.addEventListener('DOMContentLoaded', () => {
       const currentKey = getAccessKey();
       const formData = new FormData(appForm);
 
-      // Set Web3Forms configuration fields
+      // Dynamic Subject and Sender
+      const nameInput = document.getElementById('app-name');
+      const applicantName = nameInput ? nameInput.value.trim() : '';
+      if (applicantName) {
+        formData.set('subject', `${applicantName} fill coaching application`);
+      }
+      formData.set('from_name', 'private coaching form');
+
+      // Web3Forms payload parameters
       formData.set('access_key', currentKey);
       formData.set('replyto', emailVal);
+
+      const formObject = Object.fromEntries(formData.entries());
+      const jsonBody = JSON.stringify(formObject);
 
       try {
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: {
+            'Content-Type': 'application/json',
             'Accept': 'application/json'
           },
-          body: formData
+          body: jsonBody
         });
 
         const data = await response.json().catch(() => ({}));
 
-        if (response.ok && (data.success === true || data.success === 'true')) {
-          // Success
-          if (appSuccessMsg) {
-            appSuccessMsg.innerHTML = `
-              <strong>Application Received</strong>
-              <p>Thank you for taking the time to share your situation. Moksh will review your application carefully and reach out to you shortly.</p>
-            `;
-            appSuccessMsg.hidden = false;
-            appSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Strict validation: check HTTP status AND Web3Forms success flag
+        const isSuccessful = response.ok && (data.success === true || data.success === 'true');
+
+        if (isSuccessful) {
+          // Determine redirect destination based on priority rules
+          const cannotInvest = (q9Value === "I'm not currently in a position to invest");
+          const notReadyFinancial = (q10Value === "I'm not ready to make a financial commitment");
+
+          const isInvestmentReady = (q9Value === '£2,000–£3,000' || q9Value === '£3,000–£5,000');
+          const isPaymentReady = (
+            q10Value === 'Payment in full' ||
+            q10Value === 'A payment plan' ||
+            q10Value === "I'm open to discussing both"
+          );
+
+          // Priority rule: If not ready for commitment or cannot invest -> Guide URL
+          let redirectDestination = 'DEFAULT';
+          if (cannotInvest || notReadyFinancial) {
+            redirectDestination = 'GUIDE';
+          } else if (isInvestmentReady && isPaymentReady) {
+            redirectDestination = 'CALENDLY';
           }
 
-          appForm.reset();
+          // Redirection Success Message HTML
+          const SUCCESS_MESSAGE_HTML = `
+            <strong>Application Received</strong>
+            <p>Thank you! We've received your application. Redirecting you to the next step...</p>
+          `;
 
-          if (appSubmitBtn) {
-            appSubmitBtn.disabled = true;
-            const btnText = appSubmitBtn.querySelector('.btn-text');
-            if (btnText) {
-              btnText.textContent = 'Application Submitted ✓';
-            } else {
-              appSubmitBtn.textContent = 'Application Submitted ✓';
+          // Handle redirection
+          if (redirectDestination === 'CALENDLY') {
+            if (appSuccessMsg) {
+              appSuccessMsg.innerHTML = SUCCESS_MESSAGE_HTML;
+              appSuccessMsg.hidden = false;
+              appSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
+
+            if (appSubmitBtn) {
+              const btnText = appSubmitBtn.querySelector('.btn-text');
+              if (btnText) btnText.textContent = 'Redirecting to Calendar...';
+              else appSubmitBtn.textContent = 'Redirecting to Calendar...';
+            }
+
+            appForm.reset();
+
+            setTimeout(() => {
+              window.location.href = CALENDLY_URL;
+            }, 1200);
+
+          } else if (redirectDestination === 'GUIDE') {
+            const hasGuideUrl = Boolean(
+              PAID_GUIDE_URL &&
+              PAID_GUIDE_URL.trim() !== '' &&
+              PAID_GUIDE_URL !== 'PASTE_CLIENT_GUIDE_URL_HERE'
+            );
+
+            if (hasGuideUrl) {
+              if (appSuccessMsg) {
+                appSuccessMsg.innerHTML = SUCCESS_MESSAGE_HTML;
+                appSuccessMsg.hidden = false;
+                appSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+
+              if (appSubmitBtn) {
+                const btnText = appSubmitBtn.querySelector('.btn-text');
+                if (btnText) btnText.textContent = 'Redirecting to Guide...';
+                else appSubmitBtn.textContent = 'Redirecting to Guide...';
+              }
+
+              appForm.reset();
+
+              setTimeout(() => {
+                window.location.href = PAID_GUIDE_URL;
+              }, 1200);
+
+            } else {
+              // Guide URL is empty / not yet provided by client
+              if (appSuccessMsg) {
+                appSuccessMsg.innerHTML = SUCCESS_MESSAGE_HTML;
+                appSuccessMsg.hidden = false;
+                appSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+
+              if (appSubmitBtn) {
+                appSubmitBtn.disabled = true;
+                const btnText = appSubmitBtn.querySelector('.btn-text');
+                if (btnText) btnText.textContent = 'Application Submitted ✓';
+                else appSubmitBtn.textContent = 'Application Submitted ✓';
+              }
+
+              appForm.reset();
+            }
+
+          } else {
+            // General success fallback
+            if (appSuccessMsg) {
+              appSuccessMsg.innerHTML = SUCCESS_MESSAGE_HTML;
+              appSuccessMsg.hidden = false;
+              appSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            if (appSubmitBtn) {
+              appSubmitBtn.disabled = true;
+              const btnText = appSubmitBtn.querySelector('.btn-text');
+              if (btnText) btnText.textContent = 'Application Submitted ✓';
+              else appSubmitBtn.textContent = 'Application Submitted ✓';
+            }
+
+            appForm.reset();
           }
+
         } else {
           const errMsg = data.message || 'Unable to submit your application at this time. Please try again.';
           throw new Error(errMsg);
         }
+
       } catch (err) {
         console.error('Submission error:', err);
-        const userFacingErr = (err.message && err.message.toLowerCase().includes('access key'))
-          ? 'Form submission is currently being configured with the access key. Please email hello@mokshpatterns.com directly.'
-          : 'There was an issue submitting your application. Please check your connection and try again, or email hello@mokshpatterns.com directly.';
-
-        showError(userFacingErr);
+        showError('There was an issue submitting your application. Please check your connection and try again, or email hello@mokshpatterns.com directly.');
 
         if (appSubmitBtn) {
           appSubmitBtn.disabled = false;

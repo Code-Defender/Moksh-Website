@@ -1,6 +1,7 @@
 {
   "name": "moksh-patterns-website",
   "version": "1.0.0",
+  "type": "module",
   "description": "Moksh Patterns Editorial Website",
   "main": "index.html",
   "scripts": {

@@ -548,21 +548,12 @@ h1, h2, h3, h4 {
   display: inline-flex;
 }
 
-.hero-portrait-wrapper,
-.gold-frame-wrapper {
+.hero-portrait-wrapper {
   position: relative;
   border-radius: var(--radius-sm);
   box-shadow: none;
   overflow: hidden;
   line-height: 0;
-}
-
-/* Hide old decorative frame borders and overlays */
-.gold-frame-border,
-.frame-tag,
-.hero-leaf-accent,
-.hero-ambient-glow {
-  display: none !important;
 }
 
 .hero-portrait-img {
@@ -803,7 +794,6 @@ h1, h2, h3, h4 {
   margin-bottom: 2rem;
 }
 
-.offer-badge,
 .offer-tag {
   display: inline-block;
   font-size: 0.8rem;
@@ -880,30 +870,6 @@ h1, h2, h3, h4 {
   flex-shrink: 0;
 }
 
-.offer-price-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.65rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(120, 87, 31, 0.15);
-}
-
-.offer-price-val {
-  font-family: var(--font-serif);
-  font-size: 1.85rem;
-  font-weight: 600;
-  color: var(--color-antique-gold);
-  line-height: 1;
-}
-
-.offer-price-tag {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-antique-gold);
-  opacity: 0.75;
-}
 
 .offer-cta-wrap {
   width: 100%;
@@ -1105,26 +1071,6 @@ h1, h2, h3, h4 {
   margin-top: auto;
 }
 
-.author-avatar-ring {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(120, 87, 31, 0.18);
-  flex-shrink: 0;
-  background-color: var(--color-soft-beige);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-antique-gold);
-}
-
-.avatar-vector-icon {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
-  opacity: 0.85;
-}
-
 .author-name {
   font-family: var(--font-serif);
   font-size: 1.15rem;
@@ -1140,75 +1086,6 @@ h1, h2, h3, h4 {
   line-height: 1.45;
 }
 
-.verified-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.72rem;
-  color: var(--color-antique-gold);
-  opacity: 0.7;
-  margin-top: 0.35rem;
-}
-
-.linkedin-icon {
-  width: 13px;
-  height: 13px;
-  fill: currentColor;
-}
-
-/* --------------------------------------------------------------------------
-   15. WORK WITH MOKSH (WARM IVORY)
-   -------------------------------------------------------------------------- */
-.work-section {
-  padding: 7rem 0;
-  background-color: var(--bg-primary);
-}
-
-.pathways-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
-  margin-top: 4rem;
-}
-
-.pathway-card {
-  background-color: #FFFFFF;
-  padding: 3.5rem 3rem;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-sm);
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.pathway-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-
-.pathway-num {
-  font-size: 0.75rem;
-  letter-spacing: 0.25em;
-  color: var(--color-antique-gold);
-  margin-bottom: 0.75rem;
-  font-weight: 600;
-}
-
-.pathway-title {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: var(--color-antique-gold);
-}
-
-.pathway-desc {
-  font-size: 0.98rem;
-  color: var(--text-muted);
-  margin-bottom: 2.5rem;
-  line-height: 1.7;
-}
 
 /* --------------------------------------------------------------------------
    16. FINAL CTA SECTION (SOFT BEIGE)
@@ -1244,16 +1121,6 @@ h1, h2, h3, h4 {
   margin-bottom: 0;
 }
 
-.final-cta-lead {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  color: var(--color-antique-gold);
-  opacity: 0.92;
-  margin-bottom: 2.75rem;
-  max-width: 680px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 .final-cta-buttons {
   display: flex;
@@ -1372,19 +1239,6 @@ h1, h2, h3, h4 {
   fill: currentColor;
 }
 
-.footer-social-link a {
-  font-size: 0.95rem;
-  color: var(--color-antique-gold);
-  opacity: 0.85;
-  padding: 0.25rem 0;
-  display: inline-block;
-  transition: opacity var(--transition-fast), color var(--transition-fast);
-}
-
-.footer-social-link a:hover {
-  opacity: 1;
-  color: var(--color-deep-emerald);
-}
 
 .footer-sig {
   margin-top: 1.75rem;
@@ -1525,13 +1379,6 @@ h1, h2, h3, h4 {
   content: '✓ ';
   color: var(--color-deep-emerald);
   font-weight: bold;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  margin-top: 1.5rem;
 }
 
 .form-group {
@@ -1680,54 +1527,6 @@ h1, h2, h3, h4 {
   font-weight: 500;
 }
 
-.form-checkbox-label {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  cursor: pointer;
-  font-size: 0.86rem;
-  color: var(--text-muted);
-  line-height: 1.45;
-  position: relative;
-}
-
-.form-checkbox-label input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-}
-
-.checkbox-custom {
-  width: 18px;
-  height: 18px;
-  border-radius: 3px;
-  border: 1.5px solid rgba(120, 87, 31, 0.45);
-  margin-top: 1px;
-  flex-shrink: 0;
-  position: relative;
-  transition: all var(--transition-fast);
-  background: #FFFFFF;
-}
-
-.form-checkbox-label input[type="checkbox"]:checked ~ .checkbox-custom {
-  background: var(--color-deep-emerald);
-  border-color: var(--color-deep-emerald);
-}
-
-.form-checkbox-label input[type="checkbox"]:checked ~ .checkbox-custom::after {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 5px;
-  width: 5px;
-  height: 9px;
-  border: solid #FFFFFF;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
 .form-privacy-note {
   font-size: 0.82rem;
   color: var(--text-muted);
@@ -1784,7 +1583,7 @@ h1, h2, h3, h4 {
    19. RESPONSIVE BREAKPOINTS (MOBILE & TABLET)
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
-  .hero-grid, .story-grid, .offers-grid, .programme-grid {
+  .hero-grid, .story-grid, .offers-grid {
     grid-template-columns: 1fr;
     gap: 3.5rem;
   }
@@ -1794,7 +1593,7 @@ h1, h2, h3, h4 {
     line-height: 1.2;
   }
 
-  .hero-portrait-img, .programme-img {
+  .hero-portrait-img {
     height: 460px;
   }
 
@@ -1806,7 +1605,7 @@ h1, h2, h3, h4 {
     padding: 2.75rem 2rem;
   }
 
-  .testimonials-grid, .pathways-grid {
+  .testimonials-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2021,11 +1820,6 @@ h1, h2, h3, h4 {
     margin-bottom: 1.75rem;
   }
 
-  .author-avatar-ring {
-    width: 52px;
-    height: 52px;
-  }
-
   /* Work Offers Mobile */
   .work-offers-section {
     padding: 4.5rem 0;
@@ -2056,7 +1850,7 @@ h1, h2, h3, h4 {
     padding: 1.25rem 1.25rem;
   }
 
-  .section-title, .big-question-title, .final-cta-title {
+  .section-title, .final-cta-title {
     font-size: 2.1rem;
   }
 
@@ -2070,11 +1864,6 @@ h1, h2, h3, h4 {
     line-height: 1.25;
   }
 
-  .final-cta-lead {
-    font-size: 1.05rem;
-    line-height: 1.65;
-    margin-bottom: 2rem;
-  }
 
   .final-cta-buttons .btn {
     width: 100%;
@@ -2101,15 +1890,6 @@ h1, h2, h3, h4 {
     gap: 0.75rem;
   }
 
-  .programme-title {
-    font-size: 2.25rem;
-  }
-
-  .programme-price-box {
-    flex-direction: column;
-    align-items: stretch;
-    text-align: center;
-  }
 
   .modal-card {
     padding: 2rem 1.25rem;
@@ -2163,9 +1943,6 @@ h1, h2, h3, h4 {
     font-size: 1.55rem;
   }
 
-  .offer-price-val {
-    font-size: 1.5rem;
-  }
 
   .footer-logo {
     font-size: 1.05rem;

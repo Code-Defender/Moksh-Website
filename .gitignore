@@ -2,7 +2,6 @@ node_modules/
 dist/
 .DS_Store
 *.log
-copy_images.js
 assets/sofia testamonial.mp4
 .env
 .env.local
