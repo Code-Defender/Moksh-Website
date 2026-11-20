@@ -71,17 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setupModal('btn-open-contact-modal', 'modal-contact', 'modal-contact-close');
   setupModal('btn-open-workbook-offer', 'modal-workbook-offer', 'modal-workbook-offer-close');
 
-  const workbookDismissBtn = document.getElementById('modal-workbook-offer-dismiss');
-  if (workbookDismissBtn) {
-    workbookDismissBtn.addEventListener('click', () => {
-      const modal = document.getElementById('modal-workbook-offer');
-      if (modal) {
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-      }
-    });
-  }
-
   // Close modals via ESC key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {

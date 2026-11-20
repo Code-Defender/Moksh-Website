@@ -7,6 +7,8 @@
    1. DESIGN TOKENS & ROOT VARIABLES (EXACT CLIENT PALETTE)
    -------------------------------------------------------------------------- */
 :root {
+  color-scheme: light;
+
   /* Exact Client Palette */
   --color-warm-ivory: #F8F5EF;   /* Primary page background */
   --color-soft-beige: #EEE7DD;   /* Alternating section background */
@@ -78,6 +80,7 @@
 }
 
 html {
+  color-scheme: light;
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
