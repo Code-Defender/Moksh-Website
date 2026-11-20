@@ -14,22 +14,22 @@
 
 export const CONFIG = {
   // 1. FREE WEBINAR REGISTRATION
-  // [TEMPORARY DUMMY URL] — Replace with the actual webinar registration link when provided.
+  // [ACTIVE REAL URL] — Client's live webinar registration link.
   WEBINAR_REGISTRATION_URL: 
     (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_WEBINAR_URL) || 
-    'https://placeholder-systeme-io-webinar-registration.com',
+    'https://mokshu21.systeme.io/manifestation-masterclass',
 
   // 2. EXPLORE THE PROGRAMME
-  // [EXISTING REAL URL] — Active sales & landing page for the self-paced programme.
+  // [ACTIVE REAL URL] — Active sales & landing page for the self-paced programme.
   EXPLORE_PROGRAMME_URL: 
     (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_EXPLORE_PROGRAMME_URL) || 
     'https://mokshu21.systeme.io/who-taught-you-that',
 
   // 3. £27 PAID PROGRAMME / GUIDE
-  // [TEMPORARY DUMMY URL] — Replace with client's actual £27 guide landing page URL when provided.
+  // [ACTIVE REAL URL] — Client's paid identity transformation guide landing page.
   PAID_GUIDE_URL: 
     (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_PAID_PROGRAMME_27_URL) || 
-    'https://placeholder-systeme-io-27-guide.com',
+    'https://mokshu21.systeme.io/identity-transformation-guide',
 
   // 4. CALENDLY BOOKING
   // [EXISTING REAL URL] — Active 1:1 private clarity call booking calendar.
