@@ -2076,11 +2076,13 @@ h1, h2, h3, h4 {
    BREAK ONE PATTERN WORKBOOK OFFER POPUP MODAL
    -------------------------------------------------------------------------- */
 .modal-card.offer-popup-card {
-  max-width: 580px;
-  width: 92%;
-  padding: 3rem 2.5rem 2.5rem;
+  max-width: 740px;
+  width: 94%;
+  padding: 3rem 3.5rem 2.5rem;
   text-align: center;
   background-color: var(--color-warm-ivory);
+  max-height: 94vh;
+  overflow-y: auto;
 }
 
 .offer-popup-header {
@@ -2090,15 +2092,15 @@ h1, h2, h3, h4 {
 }
 
 .offer-popup-header .modal-title {
-  font-size: 2.25rem;
+  font-size: 2.35rem;
   line-height: 1.2;
-  margin-top: 0.5rem;
-  margin-bottom: 0.75rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.65rem;
   color: var(--color-deep-emerald);
 }
 
 .offer-popup-header .modal-subtitle {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: var(--color-antique-gold);
   margin-bottom: 0;
   font-weight: 500;
@@ -2106,23 +2108,25 @@ h1, h2, h3, h4 {
 
 .offer-popup-body {
   text-align: center;
-  margin-bottom: 2rem;
-  padding: 0 0.5rem;
+  margin-bottom: 1.75rem;
+  padding: 0 1rem;
+  overflow: visible;
 }
 
 .offer-popup-body p {
-  font-size: 1.025rem;
-  line-height: 1.7;
+  font-size: 1.05rem;
+  line-height: 1.65;
   color: var(--text-body);
-  margin-bottom: 1.1rem;
+  margin-bottom: 0.85rem;
 }
 
 .offer-price-highlight {
-  margin-top: 1.5rem;
-  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+  padding: 0.9rem 1.75rem;
   background-color: rgba(197, 160, 89, 0.12);
   border: 1px solid rgba(197, 160, 89, 0.35);
   border-radius: var(--radius-sm);
+  display: inline-block;
 }
 
 .offer-price-highlight p {
@@ -2139,8 +2143,10 @@ h1, h2, h3, h4 {
 }
 
 .offer-popup-footer .btn {
-  padding: 1.1rem 2rem;
-  font-size: 0.88rem;
+  width: 100%;
+  max-width: 440px;
+  padding: 1.15rem 2.25rem;
+  font-size: 0.92rem;
   letter-spacing: 0.15em;
   font-weight: 600;
 }
@@ -2163,20 +2169,47 @@ h1, h2, h3, h4 {
   color: var(--text-primary);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .modal-card.offer-popup-card {
-    padding: 2.25rem 1.5rem 2rem;
+    padding: 2.5rem 2rem 2rem;
+    max-width: 92%;
   }
 
   .offer-popup-header .modal-title {
-    font-size: 1.75rem;
+    font-size: 1.95rem;
   }
 
   .offer-popup-header .modal-subtitle {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
+  }
+
+  .offer-popup-body {
+    padding: 0;
   }
 
   .offer-popup-body p {
-    font-size: 0.95rem;
+    font-size: 1rem;
+  }
+
+  .offer-popup-footer .btn {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-card.offer-popup-card {
+    padding: 2.25rem 1.25rem 1.75rem;
+  }
+
+  .offer-popup-header .modal-title {
+    font-size: 1.65rem;
+  }
+
+  .offer-popup-header .modal-subtitle {
+    font-size: 1rem;
+  }
+
+  .offer-popup-body p {
+    font-size: 0.925rem;
   }
 }
