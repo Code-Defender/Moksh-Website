@@ -69,6 +69,18 @@ document.addEventListener('DOMContentLoaded', () => {
   setupModal('btn-explore-programme', 'modal-programme', 'modal-programme-close');
   setupModal('btn-open-story-modal', 'modal-story', 'modal-story-close');
   setupModal('btn-open-contact-modal', 'modal-contact', 'modal-contact-close');
+  setupModal('btn-open-workbook-offer', 'modal-workbook-offer', 'modal-workbook-offer-close');
+
+  const workbookDismissBtn = document.getElementById('modal-workbook-offer-dismiss');
+  if (workbookDismissBtn) {
+    workbookDismissBtn.addEventListener('click', () => {
+      const modal = document.getElementById('modal-workbook-offer');
+      if (modal) {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+    });
+  }
 
   // Close modals via ESC key
   document.addEventListener('keydown', (e) => {
@@ -110,6 +122,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('a[data-explore-programme], #btn-explore-programme-link').forEach(link => {
     link.href = CONFIG.EXPLORE_PROGRAMME_URL;
   });
+
+  // 3. Break One Pattern Workbook (£27 Paid Guide)
+  const workbookLink = document.getElementById('btn-workbook-offer-link');
+  if (workbookLink) {
+    workbookLink.href = CONFIG.PAID_GUIDE_URL;
+  }
 
   // 6. VIDEO TESTIMONIAL PLAY/PAUSE CONTROLLER
   const video = document.getElementById('testimonial-video');
@@ -367,25 +385,32 @@ document.addEventListener('DOMContentLoaded', () => {
               PAID_GUIDE_URL !== 'PASTE_CLIENT_GUIDE_URL_HERE'
             );
 
-            if (hasGuideUrl) {
-              if (appSuccessMsg) {
-                appSuccessMsg.innerHTML = SUCCESS_MESSAGE_HTML;
-                appSuccessMsg.hidden = false;
-                appSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              }
+            // Close the contact application modal
+            const contactModal = document.getElementById('modal-contact');
+            if (contactModal) {
+              contactModal.classList.remove('active');
+              contactModal.setAttribute('aria-hidden', 'true');
+            }
 
-              if (appSubmitBtn) {
-                const btnText = appSubmitBtn.querySelector('.btn-text');
-                if (btnText) btnText.textContent = 'Redirecting to Guide...';
-                else appSubmitBtn.textContent = 'Redirecting to Guide...';
-              }
+            // Restore submit button state
+            if (appSubmitBtn) {
+              appSubmitBtn.disabled = false;
+              const btnText = appSubmitBtn.querySelector('.btn-text');
+              if (btnText) btnText.textContent = 'Submit Application';
+              else appSubmitBtn.textContent = 'Submit Application';
+            }
 
-              appForm.reset();
+            appForm.reset();
 
+            // Open the Break One Pattern workbook offer modal
+            const offerModal = document.getElementById('modal-workbook-offer');
+            if (offerModal && hasGuideUrl) {
               setTimeout(() => {
-                window.location.href = PAID_GUIDE_URL;
-              }, 1200);
-
+                offerModal.classList.add('active');
+                offerModal.setAttribute('aria-hidden', 'false');
+              }, 250);
+            } else if (hasGuideUrl) {
+              window.location.href = PAID_GUIDE_URL;
             } else {
               // Guide URL is empty / not yet provided by client
               if (appSuccessMsg) {
@@ -400,8 +425,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (btnText) btnText.textContent = 'Application Submitted ✓';
                 else appSubmitBtn.textContent = 'Application Submitted ✓';
               }
-
-              appForm.reset();
             }
 
           } else {
