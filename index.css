@@ -10,12 +10,18 @@
   color-scheme: light;
 
   /* Exact Client Palette */
-  --color-warm-ivory: #F8F5EF;   /* Primary page background */
-  --color-soft-beige: #EEE7DD;   /* Alternating section background */
-  --color-antique-gold: #78571F; /* Headings and brand accents */
-  --color-deep-emerald: #123C32; /* Primary buttons and small accents */
-  --color-charcoal-ink: #1B2320; /* High-contrast editorial body text (>12:1 AAA) */
-  --color-charcoal-muted: #3D4743; /* Secondary reading text */
+  --color-warm-ivory: #F8F5EF;
+  /* Primary page background */
+  --color-soft-beige: #EEE7DD;
+  /* Alternating section background */
+  --color-antique-gold: #78571F;
+  /* Headings and brand accents */
+  --color-deep-emerald: #123C32;
+  /* Primary buttons and small accents */
+  --color-charcoal-ink: #1B2320;
+  /* High-contrast editorial body text (>12:1 AAA) */
+  --color-charcoal-muted: #3D4743;
+  /* Secondary reading text */
 
   /* Semantic Layout Backgrounds */
   --bg-primary: var(--color-warm-ivory);
@@ -73,7 +79,9 @@
 /* --------------------------------------------------------------------------
    2. RESET & BASE STYLES
    -------------------------------------------------------------------------- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -123,23 +131,70 @@ img {
 /* --------------------------------------------------------------------------
    3. SYSTEM UTILITY CLASSES
    -------------------------------------------------------------------------- */
-.bg-primary, .bg-ivory { background-color: var(--bg-primary); }
-.bg-secondary, .bg-beige, .bg-cream { background-color: var(--bg-secondary); }
-.bg-dark-shadow { background-color: var(--bg-primary); }
-.bg-footer { background-color: var(--bg-primary); }
+.bg-primary,
+.bg-ivory {
+  background-color: var(--bg-primary);
+}
 
-.text-primary { color: var(--text-primary); }
-.text-light { color: var(--text-primary); }
-.text-dark { color: var(--text-primary); }
-.text-gold { color: var(--color-antique-gold); }
-.text-gold-dark { color: var(--color-antique-gold); }
-.text-muted { color: var(--text-muted); }
-.text-emerald { color: var(--color-deep-emerald); }
+.bg-secondary,
+.bg-beige,
+.bg-cream {
+  background-color: var(--bg-secondary);
+}
 
-.font-serif { font-family: var(--font-serif); }
-.font-sans { font-family: var(--font-sans); }
-.font-serif-italic { font-family: var(--font-serif); font-style: italic; }
-.font-signature { font-family: var(--font-signature); font-size: 2.2rem; }
+.bg-dark-shadow {
+  background-color: var(--bg-primary);
+}
+
+.bg-footer {
+  background-color: var(--bg-primary);
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-light {
+  color: var(--text-primary);
+}
+
+.text-dark {
+  color: var(--text-primary);
+}
+
+.text-gold {
+  color: var(--color-antique-gold);
+}
+
+.text-gold-dark {
+  color: var(--color-antique-gold);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-emerald {
+  color: var(--color-deep-emerald);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+.font-signature {
+  font-family: var(--font-signature);
+  font-size: 2.2rem;
+}
 
 .container {
   width: 90%;
@@ -147,19 +202,25 @@ img {
   margin: 0 auto;
 }
 
-.text-center { text-align: center; }
+.text-center {
+  text-align: center;
+}
 
 /* --------------------------------------------------------------------------
    4. TYPOGRAPHY SYSTEM
    -------------------------------------------------------------------------- */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-serif);
   font-weight: 500;
   line-height: 1.2;
   color: var(--text-primary);
 }
 
-.eyebrow-label, .eyebrow-text {
+.eyebrow-label,
+.eyebrow-text {
   font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 600;
@@ -235,13 +296,17 @@ h1, h2, h3, h4 {
 }
 
 /* Primary Button: Deep Emerald background with Warm Ivory text */
-.btn-gold, .btn-primary, .btn-emerald {
+.btn-gold,
+.btn-primary,
+.btn-emerald {
   background-color: var(--color-deep-emerald);
   color: var(--color-warm-ivory);
   border-color: var(--color-deep-emerald);
 }
 
-.btn-gold:hover, .btn-primary:hover, .btn-emerald:hover {
+.btn-gold:hover,
+.btn-primary:hover,
+.btn-emerald:hover {
   background-color: var(--accent-emerald-hover);
   border-color: var(--accent-emerald-hover);
   color: var(--color-warm-ivory);
@@ -263,13 +328,15 @@ h1, h2, h3, h4 {
 }
 
 /* Outline Button: Antique Gold outline with clean hover */
-.btn-gold-outline, .btn-outline {
+.btn-gold-outline,
+.btn-outline {
   background-color: transparent;
   color: var(--color-antique-gold);
   border-color: var(--color-antique-gold);
 }
 
-.btn-gold-outline:hover, .btn-outline:hover {
+.btn-gold-outline:hover,
+.btn-outline:hover {
   border-color: var(--color-deep-emerald);
   color: var(--color-deep-emerald);
   background-color: rgba(18, 60, 50, 0.06);
@@ -1398,7 +1465,8 @@ h1, h2, h3, h4 {
   font-weight: 600;
 }
 
-.form-group input, .form-group textarea {
+.form-group input,
+.form-group textarea {
   background: #FFFFFF;
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-sm);
@@ -1409,7 +1477,8 @@ h1, h2, h3, h4 {
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.form-group input:focus, .form-group textarea:focus {
+.form-group input:focus,
+.form-group textarea:focus {
   outline: none;
   border-color: var(--color-deep-emerald);
   box-shadow: 0 0 0 3px rgba(18, 60, 50, 0.12);
@@ -1505,12 +1574,12 @@ h1, h2, h3, h4 {
   background: #FFFFFF;
 }
 
-.form-radio-label input[type="radio"]:checked ~ .radio-custom {
+.form-radio-label input[type="radio"]:checked~.radio-custom {
   border-color: var(--color-deep-emerald);
   background: var(--color-deep-emerald);
 }
 
-.form-radio-label input[type="radio"]:checked ~ .radio-custom::after {
+.form-radio-label input[type="radio"]:checked~.radio-custom::after {
   content: '';
   position: absolute;
   top: 4px;
@@ -1521,11 +1590,11 @@ h1, h2, h3, h4 {
   background: #FFFFFF;
 }
 
-.form-radio-label input[type="radio"]:focus-visible ~ .radio-custom {
+.form-radio-label input[type="radio"]:focus-visible~.radio-custom {
   box-shadow: 0 0 0 3px rgba(18, 60, 50, 0.2);
 }
 
-.form-radio-label input[type="radio"]:checked ~ .radio-text {
+.form-radio-label input[type="radio"]:checked~.radio-text {
   color: var(--color-deep-emerald);
   font-weight: 500;
 }
@@ -1586,7 +1655,10 @@ h1, h2, h3, h4 {
    19. RESPONSIVE BREAKPOINTS (MOBILE & TABLET)
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
-  .hero-grid, .story-grid, .offers-grid {
+
+  .hero-grid,
+  .story-grid,
+  .offers-grid {
     grid-template-columns: 1fr;
     gap: 3.5rem;
   }
@@ -1853,7 +1925,8 @@ h1, h2, h3, h4 {
     padding: 1.25rem 1.25rem;
   }
 
-  .section-title, .final-cta-title {
+  .section-title,
+  .final-cta-title {
     font-size: 2.1rem;
   }
 
@@ -1893,14 +1966,28 @@ h1, h2, h3, h4 {
     gap: 0.75rem;
   }
 
+  /* Modal Overlay & Responsive Container (Tablet 768px) */
+  .modal-overlay {
+    padding: 1.25rem 1rem;
+  }
 
   .modal-card {
-    padding: 2rem 1.25rem;
+    padding: 2.25rem 1.5rem;
+    width: 100%;
+    max-width: 560px;
+    box-shadow: 0 12px 36px rgba(120, 87, 31, 0.12), 0 4px 12px rgba(18, 60, 50, 0.08);
   }
 
   .modal-card.application-modal {
-    padding: 2rem 1.2rem;
-    max-height: 94vh;
+    padding: 2rem 1.25rem;
+    max-height: 92vh;
+    max-width: 600px;
+  }
+
+  .modal-close {
+    top: 1.15rem;
+    right: 1.15rem;
+    font-size: 1.85rem;
   }
 
   .form-radio-label {
@@ -1910,6 +1997,30 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 480px) {
+  /* Modal Overlay & Responsive Container (Mobile 375px - 390px) */
+  .modal-overlay {
+    padding: 0.85rem 0.65rem;
+  }
+
+  .modal-card {
+    padding: 1.75rem 1.15rem;
+  }
+
+  .modal-card.application-modal {
+    padding: 1.75rem 1rem;
+    max-height: 94vh;
+  }
+
+  .modal-close {
+    top: 0.85rem;
+    right: 0.85rem;
+    font-size: 1.75rem;
+  }
+
+  .modal-title {
+    font-size: 1.85rem;
+  }
+
   .hero-title {
     font-size: 1.85rem;
     line-height: 1.28;
@@ -2019,7 +2130,8 @@ h1, h2, h3, h4 {
   margin-bottom: 1.25rem;
 }
 
-.legal-body ul, .legal-body ol {
+.legal-body ul,
+.legal-body ol {
   margin-bottom: 1.5rem;
   padding-left: 1.5rem;
 }
