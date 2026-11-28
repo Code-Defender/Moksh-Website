@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupModal('btn-open-story-modal', 'modal-story', 'modal-story-close');
   setupModal('btn-open-contact-modal', 'modal-contact', 'modal-contact-close');
   setupModal('btn-open-workbook-offer', 'modal-workbook-offer', 'modal-workbook-offer-close');
+  setupModal('btn-open-calendly', 'modal-calendly', 'modal-calendly-close');
 
   // Close modals via ESC key
   document.addEventListener('keydown', (e) => {
@@ -349,23 +350,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // Handle redirection
           if (redirectDestination === 'CALENDLY') {
-            if (appSuccessMsg) {
-              appSuccessMsg.innerHTML = SUCCESS_MESSAGE_HTML;
-              appSuccessMsg.hidden = false;
-              appSuccessMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Close the contact application modal
+            const contactModal = document.getElementById('modal-contact');
+            if (contactModal) {
+              contactModal.classList.remove('active');
+              contactModal.setAttribute('aria-hidden', 'true');
             }
 
+            // Restore submit button state
             if (appSubmitBtn) {
+              appSubmitBtn.disabled = false;
               const btnText = appSubmitBtn.querySelector('.btn-text');
-              if (btnText) btnText.textContent = 'Redirecting to Calendar...';
-              else appSubmitBtn.textContent = 'Redirecting to Calendar...';
+              if (btnText) btnText.textContent = 'Submit Application';
+              else appSubmitBtn.textContent = 'Submit Application';
             }
 
             appForm.reset();
 
-            setTimeout(() => {
+            // Open Calendly Inline Widget inside Website Modal (with pre-filled name & email)
+            const calendlyModal = document.getElementById('modal-calendly');
+            const calendlyContainer = document.getElementById('calendly-inline-container');
+
+            if (calendlyModal && calendlyContainer) {
+              calendlyContainer.innerHTML = '';
+
+              if (window.Calendly && typeof window.Calendly.initInlineWidget === 'function') {
+                window.Calendly.initInlineWidget({
+                  url: CALENDLY_URL,
+                  parentElement: calendlyContainer,
+                  resize: true,
+                  prefill: {
+                    name: applicantName,
+                    email: emailVal
+                  }
+                });
+              } else {
+                // Direct iframe fallback if Calendly script hasn't finished loading
+                const separator = CALENDLY_URL.includes('?') ? '&' : '?';
+                const iframe = document.createElement('iframe');
+                iframe.src = `${CALENDLY_URL}${separator}name=${encodeURIComponent(applicantName)}&email=${encodeURIComponent(emailVal)}`;
+                iframe.title = 'Book Private Clarity Call with Moksh';
+                calendlyContainer.appendChild(iframe);
+              }
+
+              setTimeout(() => {
+                calendlyModal.classList.add('active');
+                calendlyModal.setAttribute('aria-hidden', 'false');
+              }, 200);
+            } else {
               window.location.href = CALENDLY_URL;
-            }, 1200);
+            }
 
           } else if (redirectDestination === 'GUIDE') {
             const hasGuideUrl = Boolean(

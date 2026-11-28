@@ -31,6 +31,10 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="./index.css">
+
+  <!-- Calendly Popup Widget -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
 
 <body class="bg-primary text-primary">
@@ -858,6 +862,15 @@
           GET MY PDF – £27 &rarr;
         </a>
       </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL 5: CALENDLY BOOKING MODAL -->
+  <div class="modal-overlay" id="modal-calendly" aria-hidden="true">
+    <div class="modal-card calendly-modal-card">
+      <button class="modal-close calendly-modal-close" id="modal-calendly-close" aria-label="Close Calendar">&times;</button>
+      <div id="calendly-inline-container" class="calendly-inline-container"></div>
     </div>
   </div>
 
